@@ -16,6 +16,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Menu esquerdo -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @if(Auth::check() && Auth::user()->role == "ADM")
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown1" role="button" data-bs-toggle="dropdown">
                             Cadastros
@@ -25,6 +26,7 @@
                             <li><a class="dropdown-item" href="/produtos">Produtos</a></li>
                         </ul>
                     </li>
+                    @endif
                 </ul>
                 <!-- Lado direito -->
                 <div class="d-flex align-items-center text-white">

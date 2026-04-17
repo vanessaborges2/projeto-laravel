@@ -16,7 +16,11 @@ class AuthController extends Controller
         $credenciais = $request->only('email', 'password');
         if (Auth::attempt($credenciais)){
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            $user = Auth::user();
+            if ($user->role == "ADM")
+                return redirect()->intended('/dashboard');
+            else 
+                return redirect()->intended('/dashboard-cli');
         } else {
             return back();
         }
