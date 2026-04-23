@@ -7,6 +7,8 @@ use App\Http\Controllers\ProdutoController;
 use App\Http\Middleware\RoleAdmMiddleware;
 use App\Http\Middleware\RoleCliMiddleware;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardClienteController;
+use App\Http\Controllers\CarrinhoController;
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -25,12 +27,9 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware([RoleCliMiddleware::class])->group(function () {
-        Route::get('/dashboard-cli', function() {
-            return view('dashboard-cli');
-        });
+        Route::get('/dashboard-cli', [DashboardClienteController::class, 'index']);
+        Route::post('/carrinho/add', [CarrinhoController::class, 'add']);
     });
-    
-    
     
 });
 
