@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware([RoleCliMiddleware::class])->group(function () {
         Route::get('/dashboard-cli', [DashboardClienteController::class, 'index']);
         Route::post('/carrinho/add', [CarrinhoController::class, 'add']);
+        Route::post('/carrinho/remove', [CarrinhoController::class, 'remove']);
+        Route::post('/carrinho/fechar', [CarrinhoController::class, 'fechar']);
     });
     
 });
